@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./AdminLogin.css";
 
 function AdminLogin() {
 
@@ -25,33 +26,33 @@ function AdminLogin() {
 
   return (
 
-    <div>
+    <div className="admin-container">
 
-      <h2>Admin Login</h2>
+      <div className="admin-card">
 
-      <form onSubmit={handleLogin}>
+        <h2>Admin Login</h2>
 
-        <input
-          type="text"
-          placeholder="Admin Username"
-          value={username}
-          onChange={(e)=>setUsername(e.target.value)}
-        />
+        <form onSubmit={handleLogin}>
 
-        <br/><br/>
+          <input
+            type="text"
+            placeholder="Admin Username"
+            value={username}
+            onChange={(e)=>setUsername(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e)=>setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+          />
 
-        <br/><br/>
+          <button className="login-btn">Login</button>
 
-        <button>Login</button>
+        </form>
 
-      </form>
+      </div>
 
     </div>
   );
