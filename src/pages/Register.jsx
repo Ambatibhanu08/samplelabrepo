@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Register.css";
 
 function Register() {
 
@@ -28,45 +27,47 @@ function Register() {
 
   return (
 
-    <div className="register-container">
+    <div>
 
-      <div className="register-card">
+      <h2>User Registration</h2>
 
-        <h2>User Registration</h2>
+      <form onSubmit={handleSubmit}>
 
-        <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
+          required
+        />
 
-          <input
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            required
-          />
+        <br/><br/>
 
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            required
-          />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+          required
+        />
 
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            required
-          />
+        <br/><br/>
 
-          <button className="register-btn">
-            Register
-          </button>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e)=>setPassword(e.target.value)}
+          required
+        />
 
-        </form>
+        <br/><br/>
 
-      </div>
+        <button>
+          Register
+        </button>
+
+      </form>
 
     </div>
 

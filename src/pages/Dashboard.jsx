@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
-import "./Dashboard.css";
 
 function Dashboard() {
 
@@ -18,7 +17,6 @@ function Dashboard() {
     }
 
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-
     setUsers(storedUsers);
 
   }, []);
@@ -47,90 +45,81 @@ function Dashboard() {
 
   return (
 
-    <div className="dashboard-container">
+    <div>
 
-      <div className="dashboard-header">
-        <h2>Admin Dashboard</h2>
-        <button className="logout-btn" onClick={logout}>
-          Logout
-        </button>
-      </div>
+      <h2>Admin Dashboard</h2>
 
-      <div className="users-section">
+      <button onClick={logout}>Logout</button>
 
-        <h3>Registered Users</h3>
+      <h3>Registered Users</h3>
 
-        {users.length === 0 ? (
+      {users.length === 0 ? (
 
-          <p>No users registered yet</p>
+        <p>No users registered yet</p>
 
-        ) : (
+      ) : (
 
-          <table className="users-table">
+        <table border="1">
 
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {users.map((user, index) => (
+              <tr key={index}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
               </tr>
-            </thead>
+            ))}
 
-            <tbody>
+          </tbody>
 
-              {users.map((user, index) => (
-                <tr key={index}>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                </tr>
-              ))}
+        </table>
 
-            </tbody>
+      )}
 
-          </table>
+      <br/><br/>
 
-        )}
-
-      </div>
-
-      <br />
-
-      <button className="fetch-btn" onClick={fetchData}>
+      <button onClick={fetchData}>
         Fetch API Data
       </button>
 
-      <div className="api-section">
+      <h3>API Data</h3>
 
-  <h3>API Data</h3>
+      {posts.length === 0 ? (
 
-  {posts.length === 0 ? (
-    <p>No API data loaded</p>
-  ) : (
+        <p>No API data loaded</p>
 
-    <table className="api-table">
+      ) : (
 
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-        </tr>
-      </thead>
+        <table border="1">
 
-      <tbody>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+            </tr>
+          </thead>
 
-        {posts.map((post) => (
-          <tr key={post.id}>
-            <td>{post.id}</td>
-            <td>{post.title}</td>
-          </tr>
-        ))}
+          <tbody>
 
-      </tbody>
+            {posts.map((post) => (
+              <tr key={post.id}>
+                <td>{post.id}</td>
+                <td>{post.title}</td>
+              </tr>
+            ))}
 
-    </table>
+          </tbody>
 
-  )}
+        </table>
 
-</div>
+      )}
 
     </div>
 
